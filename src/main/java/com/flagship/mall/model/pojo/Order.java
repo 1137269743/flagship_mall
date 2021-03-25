@@ -1,5 +1,6 @@
 package com.flagship.mall.model.pojo;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class Order {
@@ -9,7 +10,7 @@ public class Order {
 
     private Integer userId;
 
-    private Integer totalPrice;
+    private BigDecimal totalPrice;
 
     private String receiverName;
 
@@ -57,11 +58,11 @@ public class Order {
         this.userId = userId;
     }
 
-    public Integer getTotalPrice() {
+    public BigDecimal getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(Integer totalPrice) {
+    public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
     }
 

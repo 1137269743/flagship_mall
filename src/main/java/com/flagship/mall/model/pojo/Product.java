@@ -1,5 +1,6 @@
 package com.flagship.mall.model.pojo;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class Product {
@@ -13,7 +14,7 @@ public class Product {
 
     private Integer categoryId;
 
-    private Integer price;
+    private BigDecimal price;
 
     private Integer stock;
 
@@ -63,11 +64,11 @@ public class Product {
         this.categoryId = categoryId;
     }
 
-    public Integer getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

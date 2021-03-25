@@ -5,7 +5,7 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="total_price" jdbcType="INTEGER" property="totalPrice" />
+    <result column="total_price" jdbcType="DECIMAL" property="totalPrice" />
     <result column="receiver_name" jdbcType="VARCHAR" property="receiverName" />
     <result column="receiver_mobile" jdbcType="VARCHAR" property="receiverMobile" />
     <result column="receiver_address" jdbcType="VARCHAR" property="receiverAddress" />
@@ -41,7 +41,7 @@
       end_time, create_time, update_time
       )
     values (#{id,jdbcType=INTEGER}, #{orderNo,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
-      #{totalPrice,jdbcType=INTEGER}, #{receiverName,jdbcType=VARCHAR}, #{receiverMobile,jdbcType=VARCHAR}, 
+      #{totalPrice,jdbcType=DECIMAL}, #{receiverName,jdbcType=VARCHAR}, #{receiverMobile,jdbcType=VARCHAR}, 
       #{receiverAddress,jdbcType=VARCHAR}, #{orderStatus,jdbcType=INTEGER}, #{postage,jdbcType=INTEGER}, 
       #{paymentType,jdbcType=INTEGER}, #{deliveryTime,jdbcType=TIMESTAMP}, #{payTime,jdbcType=TIMESTAMP}, 
       #{endTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
@@ -107,7 +107,7 @@
         #{userId,jdbcType=INTEGER},
       </if>
       <if test="totalPrice != null">
-        #{totalPrice,jdbcType=INTEGER},
+        #{totalPrice,jdbcType=DECIMAL},
       </if>
       <if test="receiverName != null">
         #{receiverName,jdbcType=VARCHAR},
@@ -154,7 +154,7 @@
         user_id = #{userId,jdbcType=INTEGER},
       </if>
       <if test="totalPrice != null">
-        total_price = #{totalPrice,jdbcType=INTEGER},
+        total_price = #{totalPrice,jdbcType=DECIMAL},
       </if>
       <if test="receiverName != null">
         receiver_name = #{receiverName,jdbcType=VARCHAR},
@@ -196,7 +196,7 @@
     update flagship_mall_order
     set order_no = #{orderNo,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=INTEGER},
-      total_price = #{totalPrice,jdbcType=INTEGER},
+      total_price = #{totalPrice,jdbcType=DECIMAL},
       receiver_name = #{receiverName,jdbcType=VARCHAR},
       receiver_mobile = #{receiverMobile,jdbcType=VARCHAR},
       receiver_address = #{receiverAddress,jdbcType=VARCHAR},
