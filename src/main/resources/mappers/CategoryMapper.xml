@@ -119,4 +119,13 @@
     from flagship_mall_category
     where name = #{name, jdbcType=VARCHAR}
   </select>
+  <select id="selectList" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from flagship_mall_category
+  </select>
+  <select id="selectCategoriesByParentId" parameterType="int" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from flagship_mall_category
+    where parent_id = #{parentId}
+  </select>
 </mapper>

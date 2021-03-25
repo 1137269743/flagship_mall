@@ -9,20 +9,27 @@ import javax.validation.constraints.Size;
  * @Date 2021/3/25 8:52
  * @Description AddCategoryReq
  */
-public class AddCategoryReq {
+public class UpdateCategoryReq {
+    @NotNull(message = "id不能为null")
+    private Integer id;
+
     @Size(min = 2, max = 5)
-    @NotNull(message = "name不能为null")
     private String name;
 
     @Max(3)
-    @NotNull(message = "type不能为null")
     private Integer type;
 
-    @NotNull(message = "parentId不能为null")
     private Integer parentId;
 
-    @NotNull(message = "orderNum不能为null")
     private Integer orderNum;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

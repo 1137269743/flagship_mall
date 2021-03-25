@@ -7,6 +7,7 @@ import com.flagship.mall.exception.FlagshipMallException;
 import com.flagship.mall.exception.FlagshipMallExceptionEnum;
 import com.flagship.mall.model.pojo.User;
 import com.flagship.mall.service.UserService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @ApiOperation("测试方法")
     @GetMapping("/test")
     public User personalPage() {
         return userService.getUser();
@@ -35,6 +37,7 @@ public class UserController {
      * @return 统一响应对象
      * @throws FlagshipMallException 业务异常
      */
+    @ApiOperation("用户注册")
     @PostMapping("/register")
     public ApiRestResponse register(@RequestParam("userName") String userName,@RequestParam("password") String password) throws FlagshipMallException {
         if (StringUtils.isEmpty(userName)) {
@@ -59,6 +62,7 @@ public class UserController {
      * @return 统一响应对象
      * @throws FlagshipMallException 业务异常
      */
+    @ApiOperation("用户登录")
     @PostMapping("/login")
     public ApiRestResponse login(@RequestParam("userName") String userName, @RequestParam("password") String password, HttpSession session) throws FlagshipMallException {
         if (StringUtils.isEmpty(userName)) {
@@ -81,7 +85,8 @@ public class UserController {
      * @return 统一响应对象
      * @throws FlagshipMallException 业务异常
      */
-    @PostMapping("/user/update")
+    @ApiOperation("更新当前用户个性签名")
+    @PutMapping("/user/signature")
     public ApiRestResponse updateUserInfo(@RequestParam String signature, HttpSession session) throws FlagshipMallException {
         User currentUser = (User) session.getAttribute(Constant.FLAGSHIP_MALL_USER);
         if (currentUser == null) {
@@ -99,6 +104,7 @@ public class UserController {
      * @param session session对象
      * @return 统一响应对象
      */
+    @ApiOperation("用户登出")
     @PostMapping("/user/logout")
     public ApiRestResponse logout(HttpSession session) {
         session.removeAttribute(Constant.FLAGSHIP_MALL_USER);
@@ -113,6 +119,7 @@ public class UserController {
      * @return 统一响应对象
      * @throws FlagshipMallException 业务异常
      */
+    @ApiOperation("管理员用户注登录")
     @PostMapping("/adminLogin")
     public ApiRestResponse adminLogin(@RequestParam("userName") String userName, @RequestParam("password") String password, HttpSession session) throws FlagshipMallException {
         if (StringUtils.isEmpty(userName)) {
