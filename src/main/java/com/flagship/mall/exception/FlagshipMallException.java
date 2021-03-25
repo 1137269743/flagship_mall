@@ -5,7 +5,7 @@ package com.flagship.mall.exception;
  * @Date 2021/3/24 22:31
  * @Description 统一异常
  */
-public class FlagshipMallException extends Exception {
+public class FlagshipMallException extends RuntimeException {
     private final Integer code;
     private final String message;
 

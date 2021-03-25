@@ -8,12 +8,8 @@ import com.flagship.mall.exception.FlagshipMallExceptionEnum;
 import com.flagship.mall.model.pojo.User;
 import com.flagship.mall.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -22,13 +18,12 @@ import javax.servlet.http.HttpSession;
  * @Date 2021/3/24 8:57
  * @Description 用户控制器
  */
-@Controller
+@RestController
 public class UserController {
     @Autowired
     UserService userService;
 
     @GetMapping("/test")
-    @ResponseBody
     public User personalPage() {
         return userService.getUser();
     }
@@ -41,7 +36,6 @@ public class UserController {
      * @throws FlagshipMallException 业务异常
      */
     @PostMapping("/register")
-    @ResponseBody
     public ApiRestResponse register(@RequestParam("userName") String userName,@RequestParam("password") String password) throws FlagshipMallException {
         if (StringUtils.isEmpty(userName)) {
             return ApiRestResponse.error(FlagshipMallExceptionEnum.NEED_USER_NAME);
@@ -66,7 +60,6 @@ public class UserController {
      * @throws FlagshipMallException 业务异常
      */
     @PostMapping("/login")
-    @ResponseBody
     public ApiRestResponse login(@RequestParam("userName") String userName, @RequestParam("password") String password, HttpSession session) throws FlagshipMallException {
         if (StringUtils.isEmpty(userName)) {
             return ApiRestResponse.error(FlagshipMallExceptionEnum.NEED_USER_NAME);
@@ -89,7 +82,6 @@ public class UserController {
      * @throws FlagshipMallException 业务异常
      */
     @PostMapping("/user/update")
-    @ResponseBody
     public ApiRestResponse updateUserInfo(@RequestParam String signature, HttpSession session) throws FlagshipMallException {
         User currentUser = (User) session.getAttribute(Constant.FLAGSHIP_MALL_USER);
         if (currentUser == null) {
@@ -108,7 +100,6 @@ public class UserController {
      * @return 统一响应对象
      */
     @PostMapping("/user/logout")
-    @ResponseBody
     public ApiRestResponse logout(HttpSession session) {
         session.removeAttribute(Constant.FLAGSHIP_MALL_USER);
         return ApiRestResponse.success();
@@ -123,7 +114,6 @@ public class UserController {
      * @throws FlagshipMallException 业务异常
      */
     @PostMapping("/adminLogin")
-    @ResponseBody
     public ApiRestResponse adminLogin(@RequestParam("userName") String userName, @RequestParam("password") String password, HttpSession session) throws FlagshipMallException {
         if (StringUtils.isEmpty(userName)) {
             return ApiRestResponse.error(FlagshipMallExceptionEnum.NEED_USER_NAME);

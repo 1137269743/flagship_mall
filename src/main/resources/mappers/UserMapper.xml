@@ -114,7 +114,7 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByName" parameterType="string" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List"/>
     from flagship_mall_user
