@@ -4,13 +4,14 @@ import com.flagship.mall.common.ApiRestResponse;
 import com.flagship.mall.common.Constant;
 import com.flagship.mall.exception.FlagshipMallException;
 import com.flagship.mall.exception.FlagshipMallExceptionEnum;
+import com.flagship.mall.model.pojo.Product;
 import com.flagship.mall.model.request.AddProductReq;
+import com.flagship.mall.model.request.UpdateProductReq;
 import com.flagship.mall.service.ProductService;
+import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,6 +37,7 @@ public class ProductAdminController {
      * @param addProductReq 增加商品对象
      * @return 统一响应对象
      */
+    @ApiOperation("新增商品")
     @PostMapping("/admin/product")
     public ApiRestResponse addProduct(@Valid @RequestBody AddProductReq addProductReq) {
         productService.add(addProductReq);
@@ -48,6 +50,7 @@ public class ProductAdminController {
      * @param file 上传文件
      * @return 统一响应对象
      */
+    @ApiOperation("上传文件")
     @PostMapping("/admin/upload")
     public ApiRestResponse upload(HttpServletRequest httpServletRequest,@RequestParam("file") MultipartFile file) {
         String filename = file.getOriginalFilename();
@@ -84,5 +87,38 @@ public class ProductAdminController {
             e.printStackTrace();
         }
         return effectiveUri;
+    }
+
+    /**
+     * 更新商品
+     * @param updateProductReq 更新商品对象
+     * @return 统一响应对象
+     */
+    @ApiOperation("更新商品")
+    @PutMapping("/admin/product")
+    public ApiRestResponse updateProduct(@Valid @RequestBody UpdateProductReq updateProductReq) {
+        productService.update(updateProductReq);
+        return ApiRestResponse.success();
+    }
+
+    @ApiOperation("删除商品")
+    @DeleteMapping("/admin/product")
+    public ApiRestResponse deleteProduct(@RequestParam Integer id) {
+        productService.delete(id);
+        return ApiRestResponse.success();
+    }
+
+    @ApiOperation("批量上下架接口")
+    @PutMapping("/admin/product/status")
+    public ApiRestResponse batchUpdateSellStatus(@RequestParam Integer[] ids, @RequestParam Integer status) {
+        productService.batchUpdateSellStatus(ids, status);
+        return ApiRestResponse.success();
+    }
+
+    @ApiOperation("后台商品列表接口")
+    @GetMapping("/admin/products")
+    public ApiRestResponse list(@RequestParam Integer pageNum, @RequestParam Integer pageSize) {
+        PageInfo<Product> pageInfo = productService.listForAdmin(pageNum, pageSize);
+        return ApiRestResponse.success(pageInfo);
     }
 }

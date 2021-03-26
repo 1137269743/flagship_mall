@@ -40,8 +40,10 @@ public interface CategoryService {
     public PageInfo<Category> listForAdmin(Integer pageNum, Integer pageSize);
 
     /**
-     * 查询分类列表（管理员）
+     * 查询某id分类下的所有子分类（管理员）
+     *
      * @return CategoryVO列表
+     * @param parentId 父id
      */
-    public List<CategoryVO> listCategoryForCustomer();
+    public List<CategoryVO> listCategoryForCustomer(Integer parentId);
 }

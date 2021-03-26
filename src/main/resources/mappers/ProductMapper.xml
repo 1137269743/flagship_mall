@@ -155,4 +155,36 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <update id="batchUpdateSellStatus">
+    update flagship_mall_product
+    set status = #{status}
+    where id in
+    <foreach collection="ids" close=")" item="id" open="(" separator=",">
+      #{id}
+    </foreach>
+  </update>
+  <select id="selectListForAdmin" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List"/>
+    from flagship_mall_product
+    order by update_time desc
+  </select>
+  <select id="selectList" resultMap="BaseResultMap" parameterType="com.flagship.mall.model.query.ProductListQuery">
+    select
+    <include refid="Base_Column_List"/>
+    from flagship_mall_product
+    <where>
+      <if test="query.keyword != null">
+        and name like #{query.keyword}
+      </if>
+      <if test="query.categoryIds != null">
+        and category_id in 
+        <foreach collection="query.categoryIds" close=")" item="item" open="(" separator=",">
+          #{item}
+        </foreach>
+      </if>
+      and status = 1
+    </where>
+    order by update_time desc
+  </select>
 </mapper>
