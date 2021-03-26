@@ -1,6 +1,10 @@
 server:
   port: 8083
 
+file:
+  upload:
+    dir: E:/Project/JavaProject/flagship-mall/src/main/resources/static/upload/
+
 spring:
   datasource:
     name: flagship_mall_datasource

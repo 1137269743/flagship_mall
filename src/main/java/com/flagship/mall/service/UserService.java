@@ -7,7 +7,7 @@ import com.flagship.mall.model.pojo.User;
 /**
  * @Author Flagship
  * @Date 2021/3/24 8:58
- * @Description UserService
+ * @Description 用户Service
  */
 public interface UserService {
     /**

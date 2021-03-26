@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * @Author Flagship
  * @Date 2021/3/25 9:07
- * @Description
+ * @Description 分类service实现类
  */
 @Service("categoryService")
 public class CategoryServiceImpl implements CategoryService {

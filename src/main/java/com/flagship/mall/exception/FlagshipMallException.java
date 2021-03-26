@@ -3,7 +3,7 @@ package com.flagship.mall.exception;
 /**
  * @Author Flagship
  * @Date 2021/3/24 22:31
- * @Description 统一异常
+ * @Description 统一业务异常
  */
 public class FlagshipMallException extends RuntimeException {
     private final Integer code;

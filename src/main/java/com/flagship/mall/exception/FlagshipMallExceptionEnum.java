@@ -21,6 +21,8 @@ public enum FlagshipMallExceptionEnum {
     CREATE_FAILED(10010, "新增失败"),
     REQUEST_PARAM_ERROR(10011, "参数错误"),
     DELETE_FAILED(10012, "删除失败"),
+    MKDIR_FAILED(10013, "文件夹创建失败"),
+    UPLOAD_FAILED(10014, "上传失败"),
     SYSTEM_ERROR(20000, "系统异常");
     /**
      * 异常码

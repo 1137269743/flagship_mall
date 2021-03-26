@@ -54,7 +54,7 @@ public class GlobalExceptionHandler {
      * @return 统一异常响应
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Object handleMethodArgumenNotValidException(MethodArgumentNotValidException e) {
+    public Object handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         log.error("MethodArgumentNotValidException: ", e);
         return handleBindingResult(e.getBindingResult());
     }

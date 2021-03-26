@@ -22,6 +22,12 @@
     from flagship_mall_product
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectByName" parameterType="string" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"></include>
+    from flagship_mall_product
+    where name = #{name, jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from flagship_mall_product
     where id = #{id,jdbcType=INTEGER}

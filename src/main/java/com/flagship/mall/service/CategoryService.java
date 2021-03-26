@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * @Author Flagship
  * @Date 2021/3/25 9:05
- * @Description 分类目录service
+ * @Description 分类service
  */
 public interface CategoryService {
     /**
