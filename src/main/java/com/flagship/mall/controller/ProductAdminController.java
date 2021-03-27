@@ -102,8 +102,8 @@ public class ProductAdminController {
     }
 
     @ApiOperation("删除商品")
-    @DeleteMapping("/admin/product")
-    public ApiRestResponse deleteProduct(@RequestParam Integer id) {
+    @DeleteMapping("/admin/product/{id:\\d+}")
+    public ApiRestResponse deleteProduct(@PathVariable(value = "id") Integer id) {
         productService.delete(id);
         return ApiRestResponse.success();
     }

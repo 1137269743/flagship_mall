@@ -23,6 +23,8 @@ public enum FlagshipMallExceptionEnum {
     DELETE_FAILED(10012, "删除失败"),
     MKDIR_FAILED(10013, "文件夹创建失败"),
     UPLOAD_FAILED(10014, "上传失败"),
+    NOT_SALE(10015, "商品状态不可售"),
+    NOT_ENOUGH(10016, "商品库存不足"),
     SYSTEM_ERROR(20000, "系统异常");
     /**
      * 异常码

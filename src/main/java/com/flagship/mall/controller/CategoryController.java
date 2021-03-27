@@ -57,7 +57,7 @@ public class CategoryController {
     }
 
     @ApiOperation("后台更新分类")
-    @PutMapping("/admin/category/{id:\\d+}")
+    @PutMapping("/admin/category")
     public ApiRestResponse updateCategory(@Valid @RequestBody UpdateCategoryReq updateCategoryReq, HttpSession session) {
         //校验是否登录
         User currentUser = (User) session.getAttribute(Constant.FLAGSHIP_MALL_USER);
