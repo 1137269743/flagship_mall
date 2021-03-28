@@ -1,8 +1,8 @@
 package com.flagship.mall.model.request;
 
-import java.math.BigDecimal;
-import java.util.Date;
-
+/**
+ * @author flagship
+ */
 public class ProductListReq {
     private String keyword;
 
@@ -52,5 +52,16 @@ public class ProductListReq {
 
     public void setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductListReq{" +
+                "keyword='" + keyword + '\'' +
+                ", categoryId=" + categoryId +
+                ", orderBy='" + orderBy + '\'' +
+                ", pageNum=" + pageNum +
+                ", pageSize=" + pageSize +
+                '}';
     }
 }

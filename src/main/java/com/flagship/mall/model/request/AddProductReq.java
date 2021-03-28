@@ -5,6 +5,9 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
+/**
+ * @author flagship
+ */
 public class AddProductReq {
 
     @NotNull(message = "name不能为null")
@@ -83,5 +86,18 @@ public class AddProductReq {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "AddProductReq{" +
+                "name='" + name + '\'' +
+                ", image='" + image + '\'' +
+                ", detail='" + detail + '\'' +
+                ", categoryId=" + categoryId +
+                ", price=" + price +
+                ", stock=" + stock +
+                ", status=" + status +
+                '}';
     }
 }

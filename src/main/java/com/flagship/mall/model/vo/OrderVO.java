@@ -1,11 +1,10 @@
-package com.flagship.mall.model.pojo;
+package com.flagship.mall.model.vo;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
-public class Order {
-    private Integer id;
-
+public class OrderVO {
     private String orderNo;
 
     private Integer userId;
@@ -34,13 +33,9 @@ public class Order {
 
     private Date updateTime;
 
-    public Integer getId() {
-        return id;
-    }
+    private String orderStatusName;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    private List<OrderItemVO> orderItemVOList;
 
     public String getOrderNo() {
         return orderNo;
@@ -152,5 +147,21 @@ public class Order {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getOrderStatusName() {
+        return orderStatusName;
+    }
+
+    public void setOrderStatusName(String orderStatusName) {
+        this.orderStatusName = orderStatusName;
+    }
+
+    public List<OrderItemVO> getOrderItemVOList() {
+        return orderItemVOList;
+    }
+
+    public void setOrderItemVOList(List<OrderItemVO> orderItemVOList) {
+        this.orderItemVOList = orderItemVOList;
     }
 }

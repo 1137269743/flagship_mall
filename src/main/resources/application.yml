@@ -4,6 +4,7 @@ server:
 file:
   upload:
     dir: E:/Project/JavaProject/flagship-mall/src/main/resources/static/upload/
+    ip: 127.0.0.1
 
 spring:
   datasource:

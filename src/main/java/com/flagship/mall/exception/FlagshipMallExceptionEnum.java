@@ -7,7 +7,7 @@ package com.flagship.mall.exception;
  */
 public enum FlagshipMallExceptionEnum {
     /**
-     * 用户名不能为空
+     * 业务异常代码及说明
      */
     NEED_USER_NAME(10001, "用户名不能为空"),
     NEED_PASSWORD(10002, "密码不能为空"),
@@ -25,6 +25,11 @@ public enum FlagshipMallExceptionEnum {
     UPLOAD_FAILED(10014, "上传失败"),
     NOT_SALE(10015, "商品状态不可售"),
     NOT_ENOUGH(10016, "商品库存不足"),
+    CART_SELECTED_EMPTY(10017, "商品已勾选的商品为空"),
+    NO_ENUM(10018, "未找到对应的枚举类"),
+    NO_ORDER(10019, "订单不存在"),
+    NOT_YOUR_ORDER(10020, "订单不属于你"),
+    WRONG_ORDER_STATUS(10021, "订单状态不符"),
     SYSTEM_ERROR(20000, "系统异常");
     /**
      * 异常码

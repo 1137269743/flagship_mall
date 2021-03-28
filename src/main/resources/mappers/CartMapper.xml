@@ -136,4 +136,9 @@
     where c.user_id = #{userId}
     and p.status = 1
   </select>
+  <update id="selectedAllCartByUserId" parameterType="integer">
+    update flagship_mall_cart
+    set selected = #{selected,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
 </mapper>

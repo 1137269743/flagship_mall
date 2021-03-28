@@ -73,16 +73,6 @@ public class CategoryServiceImpl implements CategoryService {
      */
     @Override
     public void delete(Integer id) {
-//        Category categoryOld = categoryMapper.selectByPrimaryKey(id);
-//        //查不到记录，删除失败
-//        if (categoryOld == null) {
-//            throw new FlagshipMallException(FlagshipMallExceptionEnum.DELETE_FAILED);
-//        }
-//        int count = categoryMapper.deleteByPrimaryKey(id);
-//        if (count == 0) {
-//            throw new FlagshipMallException(FlagshipMallExceptionEnum.DELETE_FAILED);
-//        }
-
         if (categoryMapper.selectByPrimaryKey(id) == null || categoryMapper.deleteByPrimaryKey(id) == 0) {
             throw new FlagshipMallException(FlagshipMallExceptionEnum.DELETE_FAILED);
         }
@@ -117,14 +107,19 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryVOArrayList;
     }
 
-    private void recursivelyFindCategories(List<CategoryVO> categoryVOArrayList, Integer parentId) {
+    /**
+     * 递归查询某分类下的所有分类
+     * @param categoryVOList  分类列表
+     * @param parentId 父级id
+     */
+    private void recursivelyFindCategories(List<CategoryVO> categoryVOList, Integer parentId) {
         //递归所有子类别，并组合成为一个分类树
         List<Category> categoryList = categoryMapper.selectCategoriesByParentId(parentId);
         if (!CollectionUtils.isEmpty(categoryList)) {
             for (Category category : categoryList) {
                 CategoryVO categoryVO = new CategoryVO();
                 BeanUtils.copyProperties(category, categoryVO);
-                categoryVOArrayList.add(categoryVO);
+                categoryVOList.add(categoryVO);
                 recursivelyFindCategories(categoryVO.getChildCategory(), categoryVO.getId());
             }
         }
